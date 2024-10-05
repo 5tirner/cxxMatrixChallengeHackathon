@@ -24,7 +24,7 @@ class AllData
         firstRow(other.firstRow), firstCol(other.firstCol),
         underlyingData(other.underlyingData){}
 
-        std::shared_ptr<double[]> AllMatrix() const { return this->underlyingData; }
+        const std::shared_ptr<double[]> &AllMatrix() const { return this->underlyingData; }
 
         AllData &operator=(const AllData &other)
         {
