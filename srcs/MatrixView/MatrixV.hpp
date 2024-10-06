@@ -6,6 +6,8 @@
 
 class MatrixView: public AllData
 {
+    private:
+        unsigned long realCOLS, realROWS;
     public:
         MatrixView(Matrix &m, unsigned long x, unsigned long y, unsigned long rowsNb, unsigned long colsNb);
         MatrixView(const AllData &other);

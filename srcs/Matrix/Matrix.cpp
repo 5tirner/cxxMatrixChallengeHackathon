@@ -1,13 +1,30 @@
 #include "Matrix.hpp"
 #include "../MatrixView/MatrixV.hpp"
+#include <iostream>
+#include <memory>
 
-Matrix::Matrix(const MatrixView &other): AllData(std::move(other)) {}
+Matrix::Matrix(const MatrixView &other)
+{
+    this->rowsNumber = other.rows(), this->colsNumber = other.cols();
+    this->firstRow = other.rowStart(), this->firstCol = other.colStart();
+    this->underlyingData = std::shared_ptr<double[]>(new double[other.cols()*other.rows()]);
+    for (unsigned long i = 0; i < other.rows(); i++)
+    {
+        for (unsigned long j = 0; j < other.cols(); j++)
+            this->underlyingData[i] = other(i, j);
+    }
+}
 
 Matrix &Matrix::operator=( const MatrixView &other)
 {
     this->rowsNumber = other.rows(), this->colsNumber = other.cols();
     this->firstRow = other.rowStart(), this->firstCol = other.colStart();
-    this->underlyingData = other.AllMatrix();
+    this->underlyingData = std::shared_ptr<double[]>(new double[other.cols()*other.rows()]);
+    for (unsigned long i = 0; i < other.rows(); i++)
+    {
+        for (unsigned long j = 0; j < other.cols(); j++)
+            this->underlyingData[i] = other(i, j);
+    }
     return *this;
 }
 
@@ -37,14 +54,17 @@ const double &Matrix::operator()(unsigned long x, unsigned long y) const
     if (x >= this->rows() || y >= this->cols())
         throw std::overflow_error("Matrix Exception: Invalid Memory Access");
     unsigned long realX = this->firstRow + x, realY = this->firstCol + y;
-    return this->underlyingData[realX * realY + realY];
+    return this->underlyingData[realX * this->cols() + realY];
 }
 double &Matrix::operator()(unsigned long x, unsigned long y)
 {
     if (x >= this->rows() || y >= this->cols())
         throw std::overflow_error("Matrix Exception: Invalid Memory Access");
+    // for (unsigned long i = 0; i < this->cols() * this->rows(); i++)
+    //     std::cout << this->underlyingData[i] << '-';
+    // std::cout << std::endl;
     unsigned long realX = this->firstRow + x, realY = this->firstCol + y;
-    return this->underlyingData[realX * realY + realY];
+    return this->underlyingData[realX * this->cols() + realY];
 }
 
 unsigned long Matrix::rows() const
