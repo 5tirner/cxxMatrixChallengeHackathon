@@ -13,3 +13,11 @@
             - Constuctor To Create New Matrix From  The MatrixView.
             - Function To Get The Rows.
             - Function To Get The Cols.
+        * The MatrixView Class:
+            - Contains A Constructor That Take Four Parameters:
+                - The Matrix To Work On it, Row To Start From, Col To Start From, Number Of The Rows And The Number Of The Coloms Of That View. 
+            - Copy Constructor To Create New Object Based On Another One Using Deep Copy.
+            - Assignement Constructor To Exchange Data Between Two Created Objects Using Deep Copy;
+            - Constuctor To Create New Matrix From  The MatrixView.
+            - Function To Get The Rows.
+            - Function To Get The Cols.
