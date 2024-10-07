@@ -11,8 +11,8 @@ class MatrixView: public AllData
         unsigned long realCOLS, realROWS;
     public:
         MatrixView(Matrix &m, unsigned long x, unsigned long y, unsigned long rowsNb, unsigned long colsNb);
-        MatrixView(const AllData &other);
-        MatrixView(const AllData &&other);
+        MatrixView(const MatrixView &other);
+        // MatrixView(const AllData &&other);
         MatrixView &operator=(const MatrixView &other);
         ~MatrixView(){}
         const double &operator()(unsigned long x, unsigned long y) const;

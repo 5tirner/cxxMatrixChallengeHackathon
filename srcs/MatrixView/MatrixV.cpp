@@ -7,10 +7,22 @@ MatrixView::MatrixView(Matrix &m, unsigned long x, unsigned long y, unsigned lon
     this->underlyingData = m.underlyingData;
 }
 
-MatrixView::MatrixView(const AllData &other): AllData(std::move(other)){}
+MatrixView::MatrixView(const MatrixView &other): AllData()
+{
+    this->rowsNumber = other.rowsNumber, this->colsNumber = other.colsNumber;
+    this->firstRow = other.firstRow, this->firstCol = other.firstCol;
+    this->realROWS = other.realROWS, this->realCOLS = other.realCOLS;
+    this->underlyingData = other.underlyingData;
+}
 
-MatrixView::MatrixView(const AllData &&other): AllData(std::move(other)){}
-
+MatrixView &MatrixView::operator=(const MatrixView &other)
+{
+    this->rowsNumber = other.rowsNumber, this->colsNumber = other.colsNumber;
+    this->firstRow = other.firstRow, this->firstCol = other.firstCol;
+    this->realROWS = other.realROWS, this->realCOLS = other.realCOLS;
+    this->underlyingData = other.underlyingData;
+    return *this;
+}
 
 const double &MatrixView::operator()(unsigned long x, unsigned long y) const
 {

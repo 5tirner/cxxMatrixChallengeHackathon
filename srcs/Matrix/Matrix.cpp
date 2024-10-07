@@ -4,20 +4,45 @@
 Matrix::Matrix(const MatrixView &other)
 {
     this->rowsNumber = other.rowsNumber, this->colsNumber = other.colsNumber;
-    this->firstRow = other.firstRow, this->firstCol = other.firstCol;
+    this->firstRow = 0, this->firstCol = 0;
     this->underlyingData = std::shared_ptr<double[]>(new double[other.colsNumber*other.rowsNumber]);
-    
+    // std::cout << "Rows Number: " << other.rowsNumber << ", Cols Number: " << other.colsNumber << std::endl
+    // << "First Row: " << other.firstRow << ", First Col: " << other.firstCol << std::endl
+    // << "Real rows Number: " << other.realROWS << ", Real Cols Number: " << other.realCOLS << std::endl;
+    // for (unsigned long i = 0; i < other.realCOLS * other.realROWS; i++)
+    // {
+    //     if (i != 0 &&i % other.realCOLS == 0)
+    //         std::cout << std::endl;
+    //     else
+    //         std::cout << other.underlyingData[i] << ' ';
+    // }
+    // std::cout << "\nSubOne" << std::endl;
+    unsigned long k = 0;
+    for (unsigned long i = 0; i < other.rowsNumber; i++)
+    {
+        unsigned long StartFrom = other.realCOLS * (other.firstRow + i) + other.firstCol;
+        // std::cout << "start from: " << StartFrom << std::endl;
+        for (unsigned long j = 0; j < other.colsNumber; j++, StartFrom++, k++)
+        {
+            // std::cout << other.underlyingData[StartFrom] << ' ';
+            this->underlyingData[k] = other.underlyingData[StartFrom];
+        }
+        // std::cout << std::endl;
+    }
+    // std::cout << "\n-----------------------------\n";
 }
 
 Matrix &Matrix::operator=( const MatrixView &other)
 {
     this->rowsNumber = other.rowsNumber, this->colsNumber = other.colsNumber;
-    this->firstRow = other.firstRow, this->firstCol = other.firstCol;
+    this->firstRow = 0, this->firstCol = 0;
     this->underlyingData = std::shared_ptr<double[]>(new double[other.colsNumber*other.rowsNumber]);
+    unsigned long k = 0;
     for (unsigned long i = 0; i < other.rowsNumber; i++)
     {
-        for (unsigned long j = 0; j < other.colsNumber; j++)
-            this->underlyingData[i] = other(i, j);
+        unsigned long StartFrom = other.realCOLS * (other.firstRow + i) + other.firstCol;
+        for (unsigned long j = 0; j < other.colsNumber; j++, StartFrom++, k++)
+            this->underlyingData[k] = other.underlyingData[StartFrom];
     }
     return *this;
 }
