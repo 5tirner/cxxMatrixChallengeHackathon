@@ -6,6 +6,7 @@
 
 class MatrixView: public AllData
 {
+    friend class Matrix; 
     private:
         unsigned long realCOLS, realROWS;
     public:
@@ -13,11 +14,10 @@ class MatrixView: public AllData
         MatrixView(const AllData &other);
         MatrixView(const AllData &&other);
         MatrixView &operator=(const MatrixView &other);
+        ~MatrixView(){}
         const double &operator()(unsigned long x, unsigned long y) const;
         double &operator()(unsigned long x, unsigned long y);
         unsigned long rows() const;
         unsigned long cols() const;
-        unsigned long rowStart() const;
-        unsigned long colStart() const;
 };
 #endif
