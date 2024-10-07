@@ -17,11 +17,11 @@
             - Function To Get The Cols.
         * The MatrixView Class:
             - Contains A Constructor That Take Four Parameters:
-                - The Matrix To Work On it, Row To Start From, Col To Start From, Number Of The Rows And The Number Of The Coloms Of That View. 
+                - The Matrix To Work On it, Row To Start From, Col To Start From, Number Of The Rows And The Number Of The Cols Of That View. 
             - Copy Constructor To Create New Object Based On Another One.
             - Normal Assignement Constructor To Exchange Data Between Two Created Objects.;
             - Move Constructor Using.
             - Move Assigement Constructor.
-            ## ALL OF THOSE CONSTRUCTORS USING THE SAME DATA.
+            (ALL OF THOSE CONSTRUCTORS USING THE SAME DATA)
             - Function To Get The Rows.
             - Function To Get The Cols.
