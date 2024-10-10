@@ -31,4 +31,5 @@
 * So To Provide An Optimized Solution I Choose To Work With Only A Liner Array To Make Things Faster, And With Save The Real Number Of Cols And Rows I Follow This Relation To Keep My Access Operators Work As Expected ` Xpos * ColsNumber + YPos `.
 * Also I Worked With A Fantastic Thing In C++ That Keep The Two Classes Objects Related When I Want Them To Do. It's The `shared_ptr`:
     - It Is a Smart Ptr That Retains Shared Ownership Of An Object Through A Pointer.
-* The shared_ptr Help Me To Work With My MatrixView Even If The Original Matrix Is Destroyed.
+    - The shared_ptr Help Me To Work With My MatrixView Even If The Original Matrix Is Destroyed.
+    - For More Infos [cppreference: shared_ptr](https://en.cppreference.com/w/cpp/memory/shared_ptr).
