@@ -15,6 +15,7 @@
             - Constuctor To Create New Matrix From  The MatrixView.
             - Function To Get The Rows.
             - Function To Get The Cols.
+            - Access Operator To Set Value In Spicefic Position In The Matrix And Check Value Of A Position.
         * The MatrixView Class:
             - Contains A Constructor That Take Four Parameters:
                 - The Matrix To Work On it, Row To Start From, Col To Start From, Number Of The Rows And The Number Of The Cols Of That View. 
@@ -22,6 +23,12 @@
             - Normal Assignement Constructor To Exchange Data Between Two Created Objects.;
             - Move Constructor Using.
             - Move Assigement Constructor.
-            (ALL OF THOSE CONSTRUCTORS USING THE SAME DATA)
+            (ALL OF THOSE CONSTRUCTORS SHARE THE SAME UNDERLIYING DATA)
             - Function To Get The Rows.
             - Function To Get The Cols.
+            - Access Operator To Set Value In Spicefic Position In The Matrix And Check Value Of A Position.
+
+* So To Provide An Optimized Solution I Choose To Work With Only A Liner Array To Make Things Faster, And With Save The Real Number Of Cols And Rows I Follow This Relation To Keep My Access Operators Work As Expected ` Xpos * ColsNumber + YPos `.
+* Also I Worked With A Fantastic Thing In C++ That Keep The Two Classes Objects Related When I Want Them To Do. It's The `shared_ptr`:
+    - It Is a Smart Ptr That Retains Shared Ownership Of An Object Through A Pointer.
+* The shared_ptr Help Me To Work With My MatrixView Even If The Original Matrix Is Destroyed.
