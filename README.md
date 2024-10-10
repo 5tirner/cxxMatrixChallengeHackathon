@@ -33,3 +33,22 @@
     - It Is a Smart Ptr That Retains Shared Ownership Of An Object Through A Pointer.
     - The shared_ptr Help Me To Work With My MatrixView Even If The Original Matrix Is Destroyed.
     - For More Infos [cppreference: shared_ptr](https://en.cppreference.com/w/cpp/memory/shared_ptr).
+
+## EXAMPLES OF USE:
+- To Create A Matrix **MTRX**:
+    * `Matrix MTRX(10, 4);` or `Matrix MTRX(10, 4, 42);`
+    * Now You Have A Matrix Of 10 Rows And 4 cols.
+- To Check The Height And width Of The Matrix **MTRX**:
+    * `std::cout <<  MTRX.rows() << ", " << MTRX.cols() << std::endl;`
+    * The Expected Output Is: **10, 4**.
+- To Insert Value In A Specific Position Like `x=8, y=3` in The **MTRX**:
+    * `MTRX(8, 3) = 3.14;`
+    * Now The Position `x=8, y=3` Should Contains The Value: `3.14`.
+- To Check That Position:
+    * `std::cout << MTRX(0, 0) << std::endl;`
+    * The Expected Output Is `3.14`.
+- To Create Other Independent Matrix **MTRX1** From Our **MTRX**:
+    * `Matrix MTRX1(MTRX);`
+- To Create Other  Matrix **MTRX2** From Our **MTRX** And Control One Of Them from The Other:
+    * `Matrix MTRX2(std::move(MTRX));`
+
